@@ -30,7 +30,7 @@ cd ~/.ssh
 使用docsify写文档发布到github设置github pages
 - 全局安装docsify，具体安装步骤 -> [docsify官网](https://docsify.js.org/#/zh-cn/quickstart)
 - github中创建存放docsify文档的仓库，并开启`github pages`，`source`类型为`master branch`（这样就可以吧docsify中docs文件夹内的文件直接传到master分支使用）
-- 如果自定义域名的话，`Custom domain`中填写域名，然后再域名管理台进行解析
+- 如果自定义域名的话，`Custom domain`中填写域名，然后再域名管理台进行解析（CNAME）
 - 在`index.html`同级目录下增加`CNAME`文件，文件中写上自己需要指向的域名即可
 
 ## wampserve
