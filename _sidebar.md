@@ -1,6 +1,7 @@
 - [Tools](/tools/tools)
 - Vue
 - 小程序
+- JavaScript
+- 标签收藏
 - DedeCMS
 - Typecho
-
