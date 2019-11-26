@@ -2,6 +2,8 @@
 - Vue
 - 小程序
 - JavaScript
+- 界面排版技巧
+	- [flex](/div/css-flex)
 - 标签收藏
 - DedeCMS
 - Typecho
