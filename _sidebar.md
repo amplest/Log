@@ -3,6 +3,6 @@
 - 小程序
 - JavaScript
 - [HTML&CSS](/html/html-css)
-- Tag
+- [Tags](/tags/tags)
 - DedeCMS
 - Typecho
