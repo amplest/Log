@@ -1,7 +1,7 @@
 - [Tools](/tools/tools)
 - Vue
 - 小程序
-- JavaScript
+- [JavaScript](/javascript/javascript)
 - [HTML&CSS](/html/html-css)
 - [Tags](/tags/tags)
 - DedeCMS
