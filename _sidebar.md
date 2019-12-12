@@ -1,6 +1,6 @@
 - [Tools](/tools/tools)
-- Vue
-- 小程序
+- [Vue+ElemetUI](/vue-elementui/vue-elementui)
+- [小程序](/xcx/xcx)
 - [JavaScript](/javascript/javascript)
 - [HTML&CSS](/html/html-css)
 - [Tags](/tags/tags)
