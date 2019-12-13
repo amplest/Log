@@ -4,5 +4,7 @@
 - [JavaScript](/javascript/javascript)
 - [HTML&CSS](/html/html-css)
 - [Tags](/tags/tags)
+- 工作笔记
+	- [WS](/work/work-one)
 - DedeCMS
 - Typecho
