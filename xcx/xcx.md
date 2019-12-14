@@ -10,6 +10,25 @@
 
 ## WXSS
 
+### 文本省略号
+
+``` css
+/*多行*/
+word-break: break-all;
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 2;
+/*单行*/
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+white-space: initial;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 1;
+```
+
 ### switch-原生样式修改
 ``` css
 /*swtich整体大小*/
