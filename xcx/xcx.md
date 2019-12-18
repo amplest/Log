@@ -6,9 +6,33 @@
 	- 如果第一个或最后一个存在兄弟节点，在小程序端是不会有效果呈现的
 2. 
 
+## 组件
+
+- 组件可以通过`externalClasses`定义外部样式
+
+## 配置
+
+### js里面进行修改NavigationBarTitle
+``` javasceipr
+wx.setNavigationBarTitle({
+	title: value.sys_title || '首页',
+});
+```
+
 ## WXML
 
 ## WXSS
+
+### 解决switch在小程序端不能垂直居中
+
+``` css
+.wsui-flex { display: flex }
+.wsui-cross--center { align-item: center }
+```
+
+``` html
+<view class="wsui-flex wsui-cross--center"><switch class="wsui-flex"/></view>
+```
 
 ### 文本省略号
 
@@ -166,4 +190,22 @@ radio .wx-radio-input.wx-radio-input-checked::before{
 Number(status) === 1 ? first_list : (Number(status) === 2 ? second_list : third_list)
 // 02
 item.package_set_type != 2 ? '最多可选' + item.num + '个':item.type.dishes + (item.type.dishes.index > 0?'，':'')
+```
+
+### picker时间格式修改成YYYY.MM.DD
+
+``` html
+<picker bindchange="bindPickerChange" value="{{xxx == '' ? '请选择' : xxx}}" mode="date" start="1900-01-01">
+	<view class="picker">
+      {{xxx}}
+    </view>
+</picker>
+```
+
+``` javascript
+bindPickerChange(e) {
+	let { value } = e.detail;
+	let valueNew = value.split('-').join('.');
+	this.setData({ 'xxx': valueNew });
+},
 ```
