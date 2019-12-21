@@ -54,3 +54,32 @@ examList.forEach((e) => {
 	e.time = new Date(Number(e.createtime) * 1000).toLocaleDateString();
 });
 ```
+
+### input输入控制按钮点击
+
+``` html
+<input type="text" data-type="name" bindinput="handleInput" name="name" value="{{form.name}}" placeholder-class="input-placeholder"/>
+<input type="number" data-type="mobile" bindinput="handleInput" name="mobile" value="{{form.mobile}}" placeholder-class="input-placeholder"/>
+```
+
+``` javascript
+handleInput(e) {
+	let _this = this;
+	let { type } = e.currentTarget.dataset;
+	let { value} = e.detail;
+	_this.setData({
+	  [type]:value
+	},()=>{
+	  let {name='',mobile=''} = _this.data;
+	  if (name != '' && mobile != '') {
+	    _this.setData({
+	      canSave: true
+	    })
+	  } else {
+	    _this.setData({
+	      canSave: false
+	    })
+	  }
+	})
+},
+```
