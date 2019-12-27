@@ -1,5 +1,100 @@
 # Vue+ElementUI实战应用
 
+## 后台富文本编辑器
+
+``` html
+<!-- 必要样式及脚本 -->
+<link rel="stylesheet" href="./resource/css/quill.core.css"/>
+<link rel="stylesheet" href="./resource/css/quill.snow.css"/>
+<link rel="stylesheet" href="./resource/css/quill.bubble.css"/>
+<script type="text/javascript" src="./resource/js/lib/quill.js"></script>
+<script type="text/javascript" src="./resource/js/lib/vue-quill-editor.js"></script>
+<!-- 第一个 -->
+<el-form-item label="活动规则" prop="regular">
+    <input type="hidden" name="regular" />
+    <quill-editor v-model="activeForm.regular" :options="editorOption" ref="myQuillEditor"></quill-editor>
+</el-form-item>
+<v8-img-upload :image-upload-visible.sync="showImageSelector" @close="imageSelected" :multiple="false"></v8-img-upload>
+<!-- 第二个 -->
+<el-form-item label="核心优势" prop="content2">
+    <input type="hidden" name="content2" />
+    <quill-editor v-model="ele_form.content2" :options="editorOption" ref="myQuillEditor2"></quill-editor>
+</el-form-item>
+<v8-img-upload :image-upload-visible.sync="showImageSelector2" @close="imageSelected2" :multiple="false"></v8-img-upload>
+```
+
+``` javascript
+Vue.use(VueQuillEditor);
+// data
+showImageSelector: false,
+currentSelection: null,
+editorOption: {
+    placeholder: '',
+    theme: 'snow',
+    modules: {
+        toolbar: {
+            container: [
+                ['bold', 'italic', 'underline', 'strike'],     // toggled buttons
+                ['blockquote', 'code-block'],
+                [{'header': 1}, {'header': 2}],                // custom button values
+                [{'list': 'ordered'}, {'list': 'bullet'}],
+                [{'script': 'sub'}, {'script': 'super'}],      // superscript/subscript
+                [{'indent': '-1'}, {'indent': '+1'}],          // outdent/indent
+                [{'direction': 'rtl'}],                        // text direction
+                [{'size': ['small', false, 'large', 'huge']}], // custom dropdown
+                [{'header': [1, 2, 3, 4, 5, 6, false]}],
+                [{'color': []}, {'background': []}],           // dropdown with defaults from theme
+                // [{'font': []}],
+                [{'align': []}],
+                ['link', 'image', 'video'],
+                ['clean']                                      // remove formatting button
+            ],
+        }
+    }
+},
+// mounted
+mounted:function mounted(){
+    this.$refs.myQuillEditor.quill.getModule('toolbar').addHandler('image', this.imgHandler);
+},
+// methods
+imgHandler: function imgHandler() {
+    this.currentSelection = this.$refs.myQuillEditor.quill.getSelection();
+    this.showThumbSelector = true;
+    this.showImageSelector = true;
+},
+imageSelected: function imageSelected(selectedItems) {
+    if (selectedItems && selectedItems.length > 0) {
+        for (var i = 0; i < selectedItems.length; i++) {
+            var item = selectedItems[i];
+            var url = item.url;
+            this.$refs.myQuillEditor.quill.insertEmbed(this.currentSelection ? this.currentSelection.index : 0, 'image', url, 'user');
+        }
+    }
+},
+// data
+showImageSelector2: false,
+currentSelection2: null,
+// mounted
+mounted:function mounted(){
+    this.$refs.myQuillEditor2.quill.getModule('toolbar').addHandler('image', this.imgHandler2);
+},
+// methods
+imgHandler2: function imgHandler() {
+    this.currentSelection2 = this.$refs.myQuillEditor2.quill.getSelection();
+    this.showThumbSelector = true;
+    this.showImageSelector2 = true;
+},
+imageSelected2: function imageSelected2(selectedItems) {
+    if (selectedItems && selectedItems.length > 0) {
+        for (var i = 0; i < selectedItems.length; i++) {
+            var item = selectedItems[i];
+            var url = item.url;
+            this.$refs.myQuillEditor2.quill.insertEmbed(this.currentSelection2 ? this.currentSelection2.index : 0, 'image', url, 'user');
+        }
+    }
+},
+```
+
 ## 课程表项目
 
 ## 音频上传

@@ -23,6 +23,35 @@ wx.setNavigationBarTitle({
 
 ## WXSS
 
+### flex布局的坑
+
+使用flex中的space-between的时候如果碰到最后一行是单数的情况下，中间就会有空缺，解决方案
+
+``` html
+<view class="list">
+	<image src="xx"></image>
+	<image src="xx"></image>
+	<image src="xx"></image>
+</view>
+```
+
+``` css
+.list {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+.list image {
+	width: 375rpx;
+	height: 375rpx;
+}
+/*最重要的部分*/
+.list:after {
+	content: '';
+	width: 375rpx;
+}
+```
+
 ### 解决switch在小程序端不能垂直居中
 
 ``` css
