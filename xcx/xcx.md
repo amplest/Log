@@ -4,7 +4,11 @@
 
 1. :first-child/:last-child 失效
 	- 如果第一个或最后一个存在兄弟节点，在小程序端是不会有效果呈现的
-2. 
+2. 兄弟元素间样式处理
+	- :nth-of-type(2) 同级第二个兄弟元素（选择器）
+3. 小程序图表组件
+	- [F2 移动端可视化方案](https://f2.antv.vision/zh)/[语雀F2文档](https://www.yuque.com/antv/f2)
+
 
 ## 组件
 

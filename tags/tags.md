@@ -22,6 +22,7 @@ ProGit|[:memo:](https://www.progit.cn/)
 名称|链接|名称|链接
 :-:|:-:|:-:|:-:
 iconfont|[:memo:](http://iconfont.cn/)|fontawesome|[:memo:](http://fontawesome.dashgame.com/)
+feathericons|[:memo:](https://feathericons.com/)|
 
 ## 工具
 
