@@ -272,3 +272,39 @@ HTML结构如下
     </el-table-column>
 </el-table>
 ```
+
+## el-table 全选数据只获取id
+
+做一个列表页，勾选列表前面的checkbox只拿当前数据的id拼一个数组，重点代码如下
+
+``` html
+<el-table :data="studentList" ref="multipleTable" @selection-change="handleSelectionChange">
+    <el-table-column
+      type="selection"
+      width="55">
+    </el-table-column>
+</el-table>
+```
+
+``` javascript
+data() {
+    return {
+        multipleSelection: []
+    }
+}
+methods: {
+    handleSelectionChange(val) {
+      if (val) {
+        let list = [];
+        let listId = [];
+        list = val;
+        for (let i = 0; i<list.length; i++) {
+            listId.push(list[i].id);
+        }
+        this.multipleSelection = listId;
+        console.log(this.multipleSelection)
+      }
+    }
+}
+```
+
