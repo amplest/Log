@@ -8,11 +8,13 @@
 	- :nth-of-type(2) 同级第二个兄弟元素（选择器）
 3. 小程序图表组件
 	- [F2 移动端可视化方案](https://f2.antv.vision/zh)/[语雀F2文档](https://www.yuque.com/antv/f2)
-
+4. 小程序picker组件中使用fileds中的year的时候会出现显示错误，如2020年显示20
+	- 给`value`默认值的时候如果是使用`new Date().getFullYear()`的话需要使用`String`方法转换下，使用`start/end`的时候也是同理(针对ios)
 
 ## 组件
 
 - 组件可以通过`externalClasses`定义外部样式
+- 组件可以通过`triggerEvent`方法向父级传递事件（组件间通信）
 
 ## 配置
 
