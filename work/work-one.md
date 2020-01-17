@@ -8,6 +8,7 @@
 - 页面间切换或tabs切换需要增加loading
 - showToast如果多处使用可以定义全局方法
 - 山羊符号统一用`¥`
+- 使用`onPullDownRefresh`做下拉刷新，再用`wx.stopPullDownRefresh()`配合使用（在complete里面使用，意思就是无论成功失败，只要是调用了下拉刷新，最终都要停止）
 
 ### 接口
 
