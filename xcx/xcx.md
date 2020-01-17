@@ -11,9 +11,10 @@
 4. 小程序picker组件中使用fileds中的year的时候会出现显示错误，如2020年显示20
 	- 给`value`默认值的时候如果是使用`new Date().getFullYear()`的话需要使用`String`方法转换下，使用`start/end`的时候也是同理(针对ios)
 
-## 封装
+## 封装原生API
 
-- wx.request() 常用，需要封装
+- wx.request()
+- wx.navigateTo()
 
 ## 组件
 
