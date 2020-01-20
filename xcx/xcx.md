@@ -249,3 +249,18 @@ bindPickerChange(e) {
 	this.setData({ 'xxx': valueNew });
 },
 ```
+
+## iPhone X 刘海胡子兼容
+
+``` css
+padding-top: constant(safe-area-inset-top);
+padding-top: env(safe-area-inset-top);
+padding-right: constant(safe-area-inset-right);
+padding-right: env(safe-area-inset-right);
+padding-bottom: env(safe-area-inset-bottom);
+padding-bottom: constant(safe-area-inset-bottom);
+padding-bottom: calc(constant(safe-area-inset-bottom) + 50px);
+padding-bottom: calc(env(safe-area-inset-bottom) + 50px);
+padding-left: constant(safe-area-inset-left);
+padding-left: env(safe-area-inset-left);
+```
