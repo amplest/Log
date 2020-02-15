@@ -959,3 +959,26 @@ methods: {
 }
 ```
 
+## el-checkbox 单个选择成数组的操作
+
+``` html
+<el-form-item label="题型选择">
+    <el-checkbox v-model="autoRadio" label="1" @change="autoCheckBox(1)">单选</el-checkbox>
+    <el-checkbox v-model="autoMany"  label="2" @change="autoCheckBox(2)">多选</el-checkbox>
+    <el-checkbox v-model="autoJudge" label="3" @change="autoCheckBox(3)">判断</el-checkbox>
+    <el-checkbox v-model="autoBlanks" label="4" @change="autoCheckBox(4)">填空</el-checkbox>
+</el-form-item>  
+```
+
+``` javascript
+var checkTypeList = []; // 全局设置一个数组用来接收
+
+autoCheckBox(type) {
+    if (checkTypeList.indexOf(type) == -1) {
+        checkTypeList.push(type);
+    } else {
+        checkTypeList.splice(checkTypeList.indexOf(type), 1);
+    }
+    this.typeList = checkTypeList;
+},
+```

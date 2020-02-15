@@ -3,8 +3,8 @@
 - [小程序](/xcx/xcx)
 - [JavaScript](/javascript/javascript)
 - [HTML&CSS](/html/html-css)
+- Work
+	- [ws](/work/work-one)
 - [Tags](/tags/tags)
-- 工作笔记
-	- [WS](/work/work-one)
 - DedeCMS
 - Typecho

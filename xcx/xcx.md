@@ -32,6 +32,25 @@ wx.setNavigationBarTitle({
 
 ## WXML
 
+### WXS中使用replace()
+
+使用`getDate()`在IOS系统中存在兼容问题，IOS中`getDate()`只支持`2020/02/12 12:00:00`格式
+
+``` javascript
+str.replace(getRegExp('-', 'g'), '/')
+
+// 时间对比
+var timeCompare = function(subscribe_stime,start_time){
+    var new_subscribe_stime = subscribe_stime.replace(getRegExp('-', 'g'), '/');
+    var new_start_time = start_time.replace(getRegExp('-', 'g'), '/');
+
+    var compare1 = getDate() > getDate(new_subscribe_stime);
+    var compare2 = getDate(new_start_time) > getDate();
+    var compare = compare1 && compare2 ;
+    return compare;
+}
+```
+
 ## WXSS
 
 ### flex布局的坑
