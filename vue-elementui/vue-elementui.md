@@ -982,3 +982,27 @@ autoCheckBox(type) {
     this.typeList = checkTypeList;
 },
 ```
+
+## el-table 单选
+
+``` html
+<el-table ref="singleTable" @row-click="chooseone" @current-change="handleCurrentChange" highlight-current-row v-loading="tableLoading" tooltip-effect="dark" size="small" style="width: 100%" show-header="false">
+    <el-table-column label="选择" width="65" class="btn-center">
+        <template scope="scope">
+            <el-radio :label="scope.row.id" v-model="templateRadio">&nbsp;</el-radio>
+        </template>
+    </el-table-column>
+    <el-table-column  prop="content" label="文本素材" show-overflow-tooltip></el-table-column>
+</el-table>
+```
+
+``` javascript
+// data 中定义 templateRadio: null
+handleCurrentChange(val) {
+    this.newSendData.content = val.content;
+},
+chooseone(row) {
+    this.templateRadio = row.id
+},
+```
+

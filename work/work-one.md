@@ -299,3 +299,25 @@ handleInput(e) {
 	})
 },
 ```
+
+### 计时器
+
+``` javascript
+var now = new Date()
+var over = new Date(2017,4,18,20,30,00)
+var time=(over.getTime())-(now.getTime())
+ 
+ 
+time=time/1000;//毫秒数转秒数
+ 
+setInterval (function(){
+ 
+var day=parseInt(time/60/60/24)
+var hour=parseInt(time/60/60%24)
+var minute=parseInt(time/60%60)
+var second=parseInt(time%60)
+time-=1;
+ 
+console.log(day+"天"+hour+"时"+minute+"分"+second+"秒")
+},1000)
+```
