@@ -983,6 +983,21 @@ autoCheckBox(type) {
 },
 ```
 
+## el-checkbox 实现单选
+
+``` html
+<el-checkbox-group class="checked-hide" max=2 v-model="checkedLinks" @change="handleCheckedLinkChange(item)">
+    <el-checkbox :label="item.id" class="button">&nbsp;</el-checkbox>
+</el-checkbox-group>
+```
+
+``` javascript
+handleCheckedLinkChange: function(val) {
+    this.checkedLinks = new Array;
+    this.checkedLinks.push(val.id); // data 中预设一个数组
+}
+```
+
 ## el-table 单选
 
 ``` html
@@ -1006,3 +1021,105 @@ chooseone(row) {
 },
 ```
 
+## 样式附加
+
+``` javascript
+var link = document.createElement('link');
+link.rel = "stylesheet";
+link.href= "/resource/css/2018/wechat/wechat-public.css?v=" + new Date().getTime();
+document.head.appendChild(link);
+```
+
+## 动态类:class
+
+``` html
+<div :class="{ red: isRed }"></div>
+<div :class="[classA, classB]"></div>
+<div :class="[classA, { classB: isB, classC: isC }]">
+<!-- 对象 -->
+<a :class="{ 'active': hash == 'finish','nav-link':true}">已完成</a>
+<!-- 数组加对象 -->
+<div :class="['tab-btn', {'option-act': categoryNum == -1}]"  @click="navbarCategoryEvent(-1)">全部</div>
+<!-- 字符串拼接 -->
+<div :class="'classify'+(current=='0'?' active':'')">全部</div>
+<!-- 数组形式 -->
+<div :class='["classify",current=="0" ? "active" : ""]'>全部</div>
+```
+
+## v-if里面的三元表达
+
+`v-if="categoryNum != -1 && categoryNum != 0 ? true:false"`
+
+## 下载图片
+
+``` javascript
+downloadCode() {
+    var oQrcode = document.querySelector('#qrcode')
+    var url = oQrcode.src
+    var a = document.createElement('a')  
+    var event = new MouseEvent('click')  
+    // 下载图名字
+    a.download = '群活码'
+    //url 
+    a.href = url 
+    //合成函数，执行下载 
+    a.dispatchEvent(event)
+},
+```
+
+## 复制
+
+``` html
+ <el-input :style="{width: '100%'}" type="text" size="small" v-model="linkUrl" id="navbarurl" readonly="true"></el-input>
+ <el-button size="small" type="primary" icon="el-icon-copy-document" @click="copy()">复制链接地址</el-button>
+```
+
+``` javascript
+copy:function(){
+    document.getElementById('navbarurl').select(); // 选择对象
+    document.execCommand('Copy');
+    this.$message({
+        type: 'success',
+        message: '复制成功'
+    });
+},
+// 表格复制
+copyTable() {
+	Url2 = row.qr_code;  //每一行的某个值，如选中的当前行的url
+	var oInput = document.createElement('input');     //创建一个隐藏input（重要！）
+	oInput.value = Url2;    //赋值
+	console.log(oInput.value);
+	document.body.appendChild(oInput);
+	oInput.select(); // 选择对象
+	document.execCommand("Copy"); // 执行浏览器复制命令
+	oInput.className = 'oInput';
+	oInput.style.display='none';
+}
+```
+
+## el-input监听enter键
+
+`@keyup.enter.native`
+
+## el-date-picker 用法 
+
+daterange 与 datetimerange 实际中的使用（往接口里面推送）
+
+``` html
+<el-date-picker v-model="date_range" type="daterange" unlink-panels range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期" value-format="yyyy-MM-dd"></el-date-picker>
+```
+
+``` javascript
+// data
+date_range: '',
+formInline: {
+    begin_at: '',
+    end_at: '',
+}
+// methods 往接口里面推送数据的时候需要做拆分
+let date_range = this.date_range
+if (date_range) {
+    this.formInline.begin_at = date_range[0]
+    this.formInline.end_at = date_range[1]
+}
+```
