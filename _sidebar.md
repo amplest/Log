@@ -8,3 +8,4 @@
 - [Tags](/tags/tags)
 - DedeCMS
 - Typecho
+- [Vue笔记](/vue/vue)

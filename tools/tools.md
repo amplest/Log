@@ -4,14 +4,14 @@
 
 如何将本地项目通过Git工具推送至Github
 1. 创建ssh，生成`id_rsa`和`id_rsa.pub`文件
-``` bash
+``` sh
 $ git config --global user.name "youremailname"
 $ git config --global user.email "youremailname@gmail.com"
 $ ssh-keygen -t rsa -C "youremailname@gmail.com”
 ```
 2. `id_rsa.pub`文件中的秘钥复制到github的`SSH and GPG keys`
 3. 使用如下命令在对应的项目文件夹内分别完成远程库链接及上传操作
-``` bash
+``` sh
 $ git init              # 初始化本地代码仓
 $ git add -A            # 添加本地代码
 $ git commit -m "..."   # 提交本地代码
@@ -19,7 +19,7 @@ $ git remote add origin git@github.com:username/repositoriesname.git #添加远�
 $ git push origin master -f # 上传代码
 ```
 4. 常见问题&命令 
-``` bash
+``` sh
 # warning: LF will be replaced by CRLF in xxx (问题)
 $ git config --global core.autocrlf false
 # 检查本机是否有.ssh文件

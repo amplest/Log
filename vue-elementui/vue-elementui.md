@@ -8,7 +8,7 @@
 
 - 引入`moment.js` [:memo:](http://momentjs.cn/)
 
-``` bash
+``` sh
 npm install moment
 ```
 
@@ -686,7 +686,7 @@ methods: {
 
 - 引入`sortable.js`
 
-``` bash
+``` sh
 npm install sortable.js --save
 ```
 
@@ -1121,5 +1121,25 @@ let date_range = this.date_range
 if (date_range) {
     this.formInline.begin_at = date_range[0]
     this.formInline.end_at = date_range[1]
+}
+```
+
+## vue 后端返回字符串中带html的进行转义
+
+`<pre>{{xxx}}</pre>`
+
+## form自定义验证https
+
+``` javascript
+var urlValid = (rule, value, callback) => {
+    if (value == '') {
+        callback(new Error('请输入链接'));
+    } else {
+        if (value.indexOf("http://") !== 0 && value.indexOf("https://") !== 0) {
+                callback(new Error('链接格式请以http:// 或 https:// 开头'));
+            } else {
+                callback();
+        }
+    }
 }
 ```

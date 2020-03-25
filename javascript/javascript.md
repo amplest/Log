@@ -24,4 +24,3 @@ if (browser.versions.mobile) {//判断是否是移动设备打开。browser代�
         //否则就是PC浏览器打开
 }
 ```
-
