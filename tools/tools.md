@@ -26,6 +26,14 @@ $ git config --global core.autocrlf false
 cd ~/.ssh
 ```
 
+## npm 
+
+``` sh
+$ npm -v                        # 查看node版本
+$ npm cache clean -f            # 清楚nodejs的cache
+$ npm install npm@latest -g     # 更新npm到最新版本
+```
+
 ## docsify
 使用docsify写文档发布到github设置github pages
 - 全局安装docsify，具体安装步骤 -> [docsify官网](https://docsify.js.org/#/zh-cn/quickstart)
