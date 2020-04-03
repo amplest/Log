@@ -50,6 +50,7 @@ WampServer多站点多目录配置
   - DocumentRoot：项目路径
   - ServerName：服务器名称，写成域名，方便区分
   - Directory：项目路径，与 DocumentRoot 无脑一致即可
+
 ```
 <VirtualHost *:80>   
     DocumentRoot "D:/wamp/www/test"   
@@ -62,7 +63,9 @@ WampServer多站点多目录配置
     </Directory>
 </VirtualHost>
 ```
+
 - 添加本地解析，`hosts`文件修改，路径`Windows\System32\drivers\etc\hosts`，添加如下内容
+
 ```
 127.0.0.1     test.cn
 ```
