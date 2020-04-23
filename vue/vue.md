@@ -206,3 +206,24 @@ $store.registerMoule('',{})
 process.env.NODE_ENV === 'development'  开发环境true
 
 ## vuex 和 双向绑定
+
+
+
+## vue + typescript
+
+- private 私有方法
+
+- interface 检查变量类型
+
+- enum 枚举类型 ？
+
+
+- git 强制拉取
+git fetch --all
+git reset --hard origin/master
+git pull //可以省略
+
+
+``` js
+this.$router.push({'xxxxx'})
+```
