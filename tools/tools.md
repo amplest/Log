@@ -74,3 +74,12 @@ WampServer多站点多目录配置
 
 Setting Sync 配置
 
+## 快速导出文件树结构
+
+``` sh
+npm install -g treer
+# 忽略某些文件或文件夹
+treer -i "node_modules"
+# 保存目录结构到文件
+treer -e "test.txt"
+```
