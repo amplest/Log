@@ -1,6 +1,17 @@
 # Vue+ElementUI实战应用
 
-## el-tree的使用
+## 手机号11位自定义验证
+
+``` javascript
+const validatePhone = (rule, value, callback) => {//定义规则
+    let reg = /^1[345789]\d{9}$/;
+    if (value != '' && reg.test(value)) {
+        callback()
+    } else {
+        callback(new Error('请输入正确的手机号'))
+    }
+}
+```
 
 ## 课程表项目
 
