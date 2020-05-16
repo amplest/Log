@@ -1,5 +1,63 @@
 # Vue+ElementUI实战应用
 
+
+## el-tree 
+
+### 常规应用
+
+参考elementUI
+
+### 懒加载应用（适合深度数据嵌套场景）
+
+- HTML 结构
+  - default-expanded-keys 默认展开第一个节点，这个很重要，因为使用懒加载的时候，只会展示节点一，有了他会默认展开第一级下的children
+  - props设置数据接收格式可自定义字段
+
+``` html
+<el-tree :props="props" node-key="id" :default-expanded-keys="[1]" :load="loadNode" lazy></el-tree>
+```
+
+- JavaScript 部分
+
+``` javascript
+data() {
+    return {
+        props: {
+          label: 'label',
+          children: 'children',
+          isLeaf: 'leaf' // 用于判断左侧三角箭头是否展示，大多数应用于判断是否存在下级传值为true/false
+        },
+        node: null,
+        resolve: null
+    }
+},
+methods: {
+    loadNode(node, resolve) {
+        if (node.level === 0) {
+         // 当节点级别是0的时候默认展示第一级
+         // 树形结构初始化之后，接口只需要返回一个一级对象即可，前端拿到对象后将其resolve即可展示到树形结构中
+         this.node = node
+         this.resolve = resolve  // 如果树形结构上存在增删改查操作的时候，改了之后需要进行刷新操作的，就需要用到这两个操作
+          return resolve([{ name: 'region' }]);
+        } else {
+            // 当节点为1或N级的时候走这边
+            // 接口只需要返回下级数组即可数据格式如下data，最终resolve
+            const data = [{
+                label: '这是名称1',
+                isLeaf: true
+            }, {
+                label: '这是名称2'
+            }];
+            return resolve(data)
+        }
+    },
+    handleAdd() {
+        // 如果存在添加操作，添加动作完成刷新接口后，这个时候需要刷新树结构则需要进行如下更新操作
+        this.loadNode(this.node, this.resolve)
+    }
+}
+```
+
 ## 手机号11位自定义验证
 
 ``` javascript
