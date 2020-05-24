@@ -11,6 +11,78 @@
 4. 小程序picker组件中使用fileds中的year的时候会出现显示错误，如2020年显示20
 	- 给`value`默认值的时候如果是使用`new Date().getFullYear()`的话需要使用`String`方法转换下，使用`start/end`的时候也是同理(针对ios)
 
+## flex布局
+
+- flex 布局上下结构下方高度自适应
+
+``` html
+<view class="ms-flex ms-main--center container">
+  <view class="ms-flex ms-dir--left container-1">
+    <view class="container-1-top">这是第一个元素</view>
+    <view class="ms-flex ms-main--center container-1-bottom">
+      <view class="container-1-bottom-inner">
+        <view wx:for="{{20}}" wx:key="index">这是最里面的元素</view>
+      </view>
+    </view>
+  </view>
+</view>
+```
+
+``` css
+.ms-flex {
+  display: flex;
+}
+.ms-main--center {
+  justify-content: center;
+}
+.ms-dir--left {
+  flex-direction: column;
+}
+.ms-cross--center {
+  align-items: center;
+}
+.ms-cross--stretch {
+  align-items: stretch;
+}
+
+.container {
+  height: 100vh;
+  background: #aaa;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.container-1 {
+  height: 100%;
+  width: 100%;
+  background-color: #bbb;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.container-1-top {
+  background-color: #ccc;
+  height: 120rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  margin-bottom: 20rpx;
+}
+
+.container-1-bottom {
+  background-color: #ccc;
+  padding: 20rpx;
+  height: 100%;
+}
+
+.container-1-bottom-inner {
+  background: #ddd;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+
+```
+
 ## 小程序音频兼容IOS
 
 ``` html
