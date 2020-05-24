@@ -11,6 +11,41 @@
 4. 小程序picker组件中使用fileds中的year的时候会出现显示错误，如2020年显示20
 	- 给`value`默认值的时候如果是使用`new Date().getFullYear()`的话需要使用`String`方法转换下，使用`start/end`的时候也是同理(针对ios)
 
+## 小程序音频兼容IOS
+
+``` html
+ <audio controls poster="{{info.default_image}}" name="{{info.goods_name}}" author="{{info.details}}" src="{{info.audio_url}}" id="myAudio" bindtap='onAudio'></audio>
+```
+
+``` javascript
+onReady() {
+	this.audioCtx = wx.createAudioContext('myAudio')
+},
+onAudio() {
+	this.setData({
+	  isPlay: !this.data.isPlay
+	})
+	if (this.data.isPlay) {
+	  this.audioCtx.play();
+	} else {
+	  this.audioCtx.pause();
+	}
+},
+```
+
+## 兼容IOS的时间正则匹配
+
+``` javascript
+var timeCompare = function(subscribe_stime,start_time){
+    var new_subscribe_stime = subscribe_stime.replace(getRegExp('-', 'g'), '/');
+    var new_start_time = start_time.replace(getRegExp('-', 'g'), '/');
+    var compare1 = getDate() > getDate(new_subscribe_stime);
+    var compare2 = getDate(new_start_time) > getDate();
+    var compare = compare1 && compare2 ;
+    return compare;
+}
+```
+
 ## 封装原生API
 
 - wx.request()

@@ -3,7 +3,7 @@
 - [小程序](/xcx/xcx)
 - [JavaScript](/javascript/javascript)
 - [HTML&CSS](/html/html-css)
-- Work
+- [Work](/work/work-one)
 	- [ws](/work/work-one)
 - [Tags](/tags/tags)
 - DedeCMS

@@ -25,6 +25,11 @@ $ git config --global core.autocrlf false
 # 检查本机是否有.ssh文件
 cd ~/.ssh
 ```
+5. 如何针对项目去设置提交者邮箱
+// 或者设置本地项目库配置
+git config user.name "Author Name"
+git config user.email "Author Email"
+```
 
 ## npm 
 
