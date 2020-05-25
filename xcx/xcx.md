@@ -11,6 +11,76 @@
 4. 小程序picker组件中使用fileds中的year的时候会出现显示错误，如2020年显示20
 	- 给`value`默认值的时候如果是使用`new Date().getFullYear()`的话需要使用`String`方法转换下，使用`start/end`的时候也是同理(针对ios)
 
+## 地理位置重复授权
+
+``` javascript
+onLoad() {
+    wx.getLocation({
+      type: "wgs84",
+      success(res) {
+        //如果首次授权成功则执行地图定位操作，具体实现代码与此文无关，就不贴出
+      },
+      fail: function(res) {
+        //授权失败
+        wx.getSetting({
+          //获取用户的当前设置，返回值中只会出现小程序已经向用户请求过的权限
+          success: function(res) {
+            //成功调用授权窗口
+            var statu = res.authSetting;
+            if (!statu["scope.userLocation"]) {
+              //如果设置中没有位置权限
+              wx.showModal({
+                //弹窗提示
+                title: "是否授权当前位置",
+                content:
+                  "需要获取您的地理位置，请确认授权，否则地图功能将无法使用",
+                success: function(tip) {
+                  if (tip.confirm) {
+                    wx.openSetting({
+                      //点击确定则调其用户设置
+                      success: function(data) {
+                        if (data.authSetting["scope.userLocation"] === true) {
+                          //如果设置成功
+                          wx.showToast({
+                            //弹窗提示
+                            title: "授权成功",
+                            icon: "success",
+                            duration: 1000
+                          });
+                          wx.getLocation({
+                            //通过getLocation方法获取数据
+                            type: "wgs84",
+                            success(res) {
+                              //成功的执行方法
+                            }
+                          });
+                        }
+                      }
+                    });
+                  } else {
+                    //点击取消按钮，则刷新当前页面
+                    wx.redirectTo({
+                      //销毁当前页面，并跳转到当前页面
+                      url: "index" //此处按照自己的需求更改
+                    });
+                  }
+                }
+              });
+            }
+          },
+          fail: function(res) {
+            wx.showToast({
+              title: "调用授权窗口失败",
+              icon: "success",
+              duration: 1000
+            });
+          }
+        });
+      }
+    });
+  }
+```
+
 ## flex布局
 
 - flex 布局上下结构下方高度自适应
