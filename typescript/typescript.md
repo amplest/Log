@@ -15,7 +15,7 @@
 ``` ts 
 // 定义数组
 let list:number[] = [1,2,3]
-// 数组泛型 Array<元素类型>
+// **数组泛型** Array<元素类型>
 let list:Array<number> = [1,2,3]
 ```
 
@@ -163,4 +163,200 @@ let c: C
 // 可选参数
 function name(firstName: string, lastName?:string) {}
 // 默认参数
+// 如果默认参数不是放最后则需要使用undefined 或者 null 进行占位处理
+function name(firstName: string, lastName = "simon") {}
+// 剩余参数
+function name(firstName: string, ...names: string[]) {}
 ```
+
+## 回调函数和promise
+
+- 使用基于回调方式的异步函数时，一定不要调用两次回调，一定不要抛出错误
+
+### 创建promise
+
+### 订阅promise
+
+then / catch
+
+### promise 的链式性
+
+### typescript 和 promise
+
+- typescript 的强大之处是在于它可以通过promise链推测传递的值的类型
+
+### 并行控制流
+
+``` ts
+// 多个promise 同时执行，最终可以通过all属性获取n个resolved值的数组
+function userInfo(userId: string): Promise<{}> {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve({userId})
+        }, 1000)
+    })
+}
+
+function carInfo(carId: string): Promise<{}> {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve({carId})
+        }, 1200)
+    })
+}
+
+function goodInfo(goodId: string): Promise<{}> {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve({goodId})
+        }, 1500)
+    })
+}
+
+Promise.all([ userInfo('1'), carInfo('2'), goodInfo('233') ]).then((res) => {
+    console.log(res)
+})
+```
+
+## async 和 await （ES8）
+
+## 重载
+
+静态类型语言常见的一种能力，简单说就是函数或者方法有相同的名称，但是参数列表不相同，这样的同名不同参数的函数或者方法之间，互相称之为重载函数或者方法
+
+## 接口与类
+
+### 可选属性
+
+### 只读属性 （readonly）
+
+- ReadonlyArray<T>类型与Array<T>类型相似只是把可变方法去掉了，因此可以确保数组创建后再也不能被修改
+- 用readonly还是const最简单的判断方法是，看要把它作为变量使用还是作为一个属性，变量用const，属性用readonly
+
+### 额外的属性检查
+
+#### 函数类型
+
+### 可索引类型
+
+### 继承接口
+
+## 类
+
+### 定义
+
+### 实现接口
+
+### 继承 （extends）
+
+### 存取器
+
+get / set
+
+``` ts
+let passcode = 'passcode';
+
+class Employee {
+    private _fullName: string
+
+    get fullName(): string {
+        return this._fullName
+    }
+
+    set fullName(newNmae: string) {
+        if (passcode && passcode == 'passcode') {
+            this._fullName = newName;
+        } else {
+            console.log("Error: Unauthorized update of employee")
+        }
+    }
+}
+
+let employee = new Employee();
+employee.fullName = 'Bob Smith'
+if (employee.fullName) {
+    alert(employee.fullName)
+}
+```
+
+- 需要将编译器设置为输出ECMAScript5或更高，不支持降级到ECMAScript3
+- 只有带git 不带有set 的存取器自动被判断为readonly，这在从代码生成.d.ts文件时是由帮助的，因为利用这个属性的用户会看到不允许改变它的值
+
+### 只读属性 （readonly）
+
+``` ts
+class Octopus {
+    readonly name: string
+    readonly numberOflegs: number = 7
+    constructor (theName: string) {
+        this.name = theName
+    }
+}
+
+let dad = new Octopus('wocao wuqing')
+dat.name = "wuqing wocao" // name 只读，不支持修改
+```
+
+### 类函数和静态属性
+
+static 静态属性
+
+### 抽象类
+
+- abstract 用于定义抽象类和在抽象类内部定义抽象方法
+- 可以包含访问修饰符
+
+### 疑问
+
+- interface 用于约定函数，会带来哪些好处
+
+## 命名空间与模块
+
+### 单文件命名空间
+
+namespace 
+
+### 多文件命名空间
+
+### 别名 （简化命名空间）
+
+### 外部命名空间
+
+## 模块
+
+### 导出与导入
+
+export / import
+
+- 导出重命名
+
+``` ts
+export { name as newName }
+```
+
+- 导入重命名
+
+``` ts
+import { name as newName } from './xx'
+// 将整个库到处到一个变量
+import { * as newName } from './xx' 
+```
+
+- 默认导出 default
+
+``` ts
+export default class newName {}
+```
+
+- export= 和 import = require()
+    - export= 定义一个模块的导出对象，类/接口/命名空间/函数/枚举
+    - 如果导出了一个使用了 export= 的模块时，必须使用ts提供的特定语法`import module = require('module')`
+
+### 生成模块
+
+- CommonJS 服务端
+- AMD 浏览器
+- UMD 浏览器或服务端
+- ES Module 浏览器或Node后端服务
+
+### 外部模块
