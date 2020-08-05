@@ -2,10 +2,9 @@
 - [Vue+ElemetUI](/vue-elementui/vue-elementui)
 - [小程序](/xcx/xcx)
 - [JavaScript](/javascript/javascript)
+- [TypeScript](/typescript/typescript)
 - [HTML&CSS](/html/html-css)
 - [Work](/work/work-one)
 	- [ws](/work/work-one)
+	- [yozo](/work/work-two)
 - [Tags](/tags/tags)
-- DedeCMS
-- Typecho
-- [Vue笔记](/vue/vue)
