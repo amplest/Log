@@ -2,6 +2,8 @@
 - [Vue+ElemetUI](/vue-elementui/vue-elementui)
 - [小程序](/xcx/xcx)
 - [JavaScript](/javascript/javascript)
+  - [基础知识](/javascript/javascript)
+  - [技巧](/javascript/skill)
 - [TypeScript](/typescript/typescript)
 - [HTML&CSS](/html/html-css)
 - [Work](/work/work-one)
