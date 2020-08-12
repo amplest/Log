@@ -4,6 +4,7 @@
 - [JavaScript](/javascript/javascript)
   - [基础知识](/javascript/javascript)
   - [技巧](/javascript/skill)
+  - [canvas](/javascript/canvas)
 - [TypeScript](/typescript/typescript)
 - [HTML&CSS](/html/html-css)
 - [Work](/work/work-one)
