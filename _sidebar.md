@@ -11,3 +11,4 @@
 	- [ws](/work/work-one)
 	- [yozo](/work/work-two)
 - [Tags](/tags/tags)
+- [Article](/article/article)
