@@ -62,4 +62,36 @@
     }
     // 常规函数中直接可以用arguments.length直接读取
 	```
-4. 
+4. **ArrayList** - arraycopy方法JS重构
+	``` js
+	// arraycopy 重构 TODO: length 传入长度-1
+    static _arraycopy(
+        sourceData,
+        sourceStartIndex,
+        targetData,
+        targetStartIndex,
+        length
+    ) {
+        if (targetStartIndex <= sourceStartIndex) {
+            // 往前移
+            for (
+                let i = targetStartIndex;
+                i <= targetStartIndex + length;
+                i++
+            ) {
+                targetData[i] = sourceData[sourceStartIndex++]
+            }
+        } else {
+            // 往后移
+            for (
+                let i = targetStartIndex + length;
+                i >= sourceStartIndex;
+                i--
+            ) {
+                targetData[i] = sourceData[i - 1]
+            }
+        }
+        console.log('arraycopy后最终目标数组: ', targetData)
+        return targetData
+    }
+	```
