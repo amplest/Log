@@ -1,0 +1,1 @@
+- JavaScript [判断JS类型的几种方式?](tool/article/article1.md)
