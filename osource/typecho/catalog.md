@@ -2,7 +2,7 @@
 
 轻量级博客驱动[Typecho](http://typecho.org/)
 
-## 目录
+## 目录 <!-- {docsify-ignore} -->
 
 - [typecho自定义上下翻页样式](osource/typecho/00_page.md)
 - [typecho评论列表自定义样式](osource/typecho/01_list.md)

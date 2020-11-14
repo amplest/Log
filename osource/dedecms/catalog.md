@@ -3,7 +3,7 @@
 - 内容管理工具[DedeCMS](http://www.dedecms.com/products/dedecms/downloads/)
 - 标签调用工具箱[Tool工具箱](http://tools.dedecms.com/)
 
-## 目录
+## 目录 <!-- {docsify-ignore} -->
 
 - [前台标签调用汇总](osource/dedecms/00_tag.md)
 - [首页/列表/文章调用新建模型中的字段方法](osource/dedecms/01_model.md)
