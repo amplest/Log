@@ -26,11 +26,20 @@ $ git config --global core.autocrlf false
 cd ~/.ssh
 ```
 5. 如何针对项目去设置提交者邮箱
-
 ``` sh
-// 或者设置本地项目库配置
+# 或者设置本地项目库配置
 git config user.name "Author Name"
 git config user.email "Author Email"
+```
+6. 存在冲突需要考虑merge的时候
+``` sh
+git reset --soft HEAD~2
+```
+7. 本地删除文件后需要拉新文件的操作
+``` sh
+git fetch --all
+git reset --hard origin/master
+git pull
 ```
 
 ## npm 

@@ -13,5 +13,8 @@
   * [DedeCMS](osource/dedecms/catalog.md)
   * [Typecho](osource/typecho/catalog.md)
 
+* 日常工作
+  * [WebOffice4.0](work/yozo.md)
+
 * 健康生活
   * [2020年计划](home.md)
