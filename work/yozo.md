@@ -1,8 +1,8 @@
 # 工作积累
 
-
 ## 记录
 
+- clone操作有两种方式: `System.clone(argument)`,`CloneUtil.clone(argument)`
 - `_$SSView`, `_$Workbook` 合并为 `workBookView`
 - 单元格数据 `sheet.getCell()`
 - sheetId: `workbookview.getWorksheet().sheet.id`;
@@ -66,13 +66,10 @@ if (!hyperLinkManager) {
 
 - 新功能断点从3.1中`SsRequestItem`进断else
 - 一个功能的所有管理可以考虑放在一起,哪怕是从控制层过来的,也可以这么进行处理,可以参考AutoFilterManager中的init方法(此方法需要在workbookview中进行重置)
+- 初始化表之后单元格属性中是不存在行头相关信息的,做操作的时候如果涉及到(如筛选),需要手动进行添加操作`HeadItem`
 
-
-
-## 遇事不要慌,不要忙,一点点来解决.
-
+## 遇事不要慌,不要忙,一点点来解决.  <!-- {docsify-ignore} -->
 
 ## 问题
 
-- SheetData 中`getRowHeader`方法中cell为null, 行头信息获取失败
-- 
+下一个工作日的任务衔接, 用于快速进入工作状态!
