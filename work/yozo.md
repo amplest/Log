@@ -19,9 +19,13 @@ for (let i = sr; i <= er; i++) {
     }
 }
 ```
+- 排序: 0:升序, 1:降序
 - 筛选: 1:数字, 2:日期, 0:文本
 - `getCellXByCol` 根据列数得X,x为单元格左边距离画布x轴原点距离, 如果需要得到右边距离画布原点距离,需要加上列宽 - WorkSheetView
-- `getColWidth` 获取列宽 - WorkSheetView
+- `getColWidth` 获取常规列宽 - WorkSheetView
+- `getRowHeight` 获取常规行高 - WorkSheetView
+- `_getRowHeight` 获取带有缩放值的行高
+- `_getColumnWidth` 获取带有缩放值的列宽
 - `getCursorTypeFromXY` 通过XY得到对应的单元格信息 - WorkSheetView
 - `groupRowClick` 实现鼠标点击之类的方法 - WorkSheetView
 - `worksheetview` 相当于单张工作表
@@ -61,6 +65,8 @@ if (!hyperLinkManager) {
 - `_getCoordinates` 获取坐标`EventsController`
 - `mouseMove`中只需要控制元素隐藏与展示即可
 - `Dialog`调用方式`Dialog.show()`,`SweetDialog.showDialog(string)`
+- 考虑到电脑高分屏可以使用`ratioToEvent(转化为event原始x，y)`/`eventToRatio(转化为高分屏下x，y)`方法
+- 
 
 ## 技巧
 

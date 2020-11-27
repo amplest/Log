@@ -23,3 +23,5 @@
 - [标签TAG调用及标签云实现方法](osource/dedecms/15_tag_cloud.md)
 - [按权重排序不准或BUG的处理方法](osource/dedecms/16_weight.md)
 - [后台修改小技巧](osource/dedecms/17_ht_modify.md)
+
+*仅用于学习交流*
