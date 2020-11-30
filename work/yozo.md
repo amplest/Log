@@ -7,15 +7,31 @@
 - 单元格数据 `sheet.getCell()`
 - sheetId: `workbookview.getWorksheet().sheet.id`;
 - sheet: `workbookview.getWorksheet().sheet`;
-- 调用单元格默认属性: `CellAttrOp.getViewAttribute(book.styleSet, sheet, row, col)`;
+- 调用单元格默认属性, 现在取属性同意使用`CellAttrOp.getEntireAttrs`
+``` javascript
+// 取某个单元格的属性
+dca = System.clone(CellAttrOp.getEntireAttrs(sheet.getBook(), sheet, sr, sc))
+if (dca === null) {
+    dca = new CellAttribute()
+    dca.setFont(new SSFont())
+}
+dca.getFont();
+```
 - 前端拿到区域及活动单元格: `this.workBookView.getWorksheet().selectionRange`
 - 取默认样式: `System.clone(this.book.defAttr)`
 - 取区域一个区域的默认属性
 ``` javascript
 for (let i = sr; i <= er; i++) {
     for (let j = sc; j <= ec; j++) {
-        let dca: CellAttribute = System.clone(CellAttrOp.getViewAttribute(this.sheet.getBook().getStyleSet(), this.sheet, i, j))
-        console.log(dca)
+        dca = System.clone(CellAttrOp.getEntireAttrs(sheet.getBook(), sheet, i, j))
+        if (dca === null) {
+            dca = new CellAttribute()
+            dca.setFont(new SSFont())
+        }
+        dca.getFont();
+        let targetFont = dca.getFont(); // 获取Font对象
+        targetFont.setColor(SSWrench.getTargetSsColor("(0, 0, 255)")); // 设置颜色
+        targetFont.setUnderline(0); // 设置下划线
     }
 }
 ```
@@ -61,12 +77,13 @@ let hyperLinkManager:HyperLinkManager = this.sheet.getFunction(ModelCons.FUN_HYP
 if (!hyperLinkManager) {
 	hyperLinkManager = new HyperLinkManager(this.sheet);
 }
+// 这种方式其实会弃用,以后直接使用类调用
 ```
 - `_getCoordinates` 获取坐标`EventsController`
 - `mouseMove`中只需要控制元素隐藏与展示即可
 - `Dialog`调用方式`Dialog.show()`,`SweetDialog.showDialog(string)`
 - 考虑到电脑高分屏可以使用`ratioToEvent(转化为event原始x，y)`/`eventToRatio(转化为高分屏下x，y)`方法
-- 
+- 菜单栏的状态涉及文件`workbookview`/`MenuSystem`
 
 ## 技巧
 
