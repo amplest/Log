@@ -84,15 +84,31 @@ if (!hyperLinkManager) {
 - `Dialog`调用方式`Dialog.show()`,`SweetDialog.showDialog(string)`
 - 考虑到电脑高分屏可以使用`ratioToEvent(转化为event原始x，y)`/`eventToRatio(转化为高分屏下x，y)`方法
 - 菜单栏的状态涉及文件`workbookview`/`MenuSystem`
+- 取用户信息`UserData`
+- 取文档信息`AppData`
+- 3.2中所有的`DocumentData`全部替换成`AppData`
+- 取前端区域`ViewBasicRange`:`let range = this.workBookView.getWorksheet(null, null).selectionRange.ranges;`
+- 转成后端`BasicRange`:`let ranges: BasicRange[] = SSWrench.multipleViewRangeToModelRange(range)`
 
 ## 技巧
 
 - 新功能断点从3.1中`SsRequestItem`进断else
 - 一个功能的所有管理可以考虑放在一起,哪怕是从控制层过来的,也可以这么进行处理,可以参考AutoFilterManager中的init方法(此方法需要在workbookview中进行重置)
 - 初始化表之后单元格属性中是不存在行头相关信息的,做操作的时候如果涉及到(如筛选),需要手动进行添加操作`HeadItem`
-
-## 遇事不要慌,不要忙,一点点来解决.  <!-- {docsify-ignore} -->
+- 前端读属性相关信息`_addCellTextToCache`(worksheetview中)断点
 
 ## 问题
 
 下一个工作日的任务衔接, 用于快速进入工作状态!
+
+
+
+
+
+## 复制粘贴功能重做
+
+### 文件释义
+
+- `clipboard.d.ts` : 剪切板常量管理
+- `ClipboardTrigger` : 剪切板触发器
+- `Clipboard` : 剪切板
