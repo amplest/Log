@@ -24,14 +24,17 @@ dca.getFont();
 for (let i = sr; i <= er; i++) {
     for (let j = sc; j <= ec; j++) {
         dca = System.clone(CellAttrOp.getEntireAttrs(sheet.getBook(), sheet, i, j))
-        if (dca === null) {
-            dca = new CellAttribute()
-            dca.setFont(new SSFont())
+        if (dca == null) {
+            dca = new CellAttribute();
         }
-        dca.getFont();
-        let targetFont = dca.getFont(); // 获取Font对象
-        targetFont.setColor(SSWrench.getTargetSsColor("(0, 0, 255)")); // 设置颜色
-        targetFont.setUnderline(0); // 设置下划线
+        if (dca.getFont() == null) {
+            let font = new SSFont();
+            font.clear()
+            dca.setFont(font)
+        }
+        let targetFont = dca.getFont();
+        targetFont.setColor(SSWrench.getTargetSsColor("rgb(0, 0, 255)"));
+        targetFont.setUnderline(0);
     }
 }
 ```
@@ -89,6 +92,10 @@ if (!hyperLinkManager) {
 - 3.2中所有的`DocumentData`全部替换成`AppData`
 - 取前端区域`ViewBasicRange`:`let range = this.workBookView.getWorksheet(null, null).selectionRange.ranges;`
 - 转成后端`BasicRange`:`let ranges: BasicRange[] = SSWrench.multipleViewRangeToModelRange(range)`
+``` javascript
+let clearSelectRange = this.workBookView.getWorksheet(null, null).selectionRange.ranges; // 前端区域
+let clearFeranges: BasicRange[] = Array<BasicRange>(SSWrench.viewRangeToModelRange(clearSelectRange[0])) // 后端区域
+```
 
 ## 技巧
 
