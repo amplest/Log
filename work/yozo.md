@@ -9,13 +9,19 @@
 - sheet: `workbookview.getWorksheet().sheet`;
 - 调用单元格默认属性, 现在取属性同意使用`CellAttrOp.getEntireAttrs`
 ``` javascript
-// 取某个单元格的属性
+// 单个单元格, 设置超链接的单元格字符属性
 dca = System.clone(CellAttrOp.getEntireAttrs(sheet.getBook(), sheet, sr, sc))
-if (dca === null) {
+if (dca == null) {
     dca = new CellAttribute()
-    dca.setFont(new SSFont())
 }
-dca.getFont();
+if (dca.getFont() == undefined) {
+    let font: SSFont = new SSFont();
+    font.clear()
+    dca.setFont(font)
+}
+let targetFont = dca.getFont();
+targetFont.setColor(SSWrench.getTargetSsColor("(0, 0, 255)"));
+targetFont.setUnderline(0)
 ```
 - 前端拿到区域及活动单元格: `this.workBookView.getWorksheet().selectionRange`
 - 取默认样式: `System.clone(this.book.defAttr)`
@@ -95,6 +101,29 @@ if (!hyperLinkManager) {
 ``` javascript
 let clearSelectRange = this.workBookView.getWorksheet(null, null).selectionRange.ranges; // 前端区域
 let clearFeranges: BasicRange[] = Array<BasicRange>(SSWrench.viewRangeToModelRange(clearSelectRange[0])) // 后端区域
+```
+- 协作中需要将传给协作者的对象转成对应类型对象的方法`System.objectToClass(HyperLink, temporaryHl)`
+- 存档&协作(最终协作需要在`SsChange`再操作一次)通用
+``` javascript
+// 方法入口第一行
+ this.workBookView.getWorkBook().methodDataList = [];
+
+// 方法绘制完成后紧接
+if (ModifyManager.isCollaboration()) {
+    // 协作
+    this.workBookView.optCollaboration(this.workBookView.getWorkBook().methodDataList)
+} else {
+    // 存档
+    ModifyManager.sendChanges(this.workBookView.getWorkBook().methodDataList);
+}
+
+// 进入对应功能中
+// 对应功能位置存档数据重组
+let data = {};
+// SsMethod 中存放对应功能的数字编号
+let change = new SsChange(SsMethod.setHyperLink, -1);
+change.data = data;
+this.getWorkBook().methodDataList.push(change);
 ```
 
 ## 技巧

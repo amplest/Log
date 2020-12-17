@@ -121,3 +121,18 @@ onSubmit() {
     console.log(arrFor)
 }
 ```
+
+## 倒序
+
+``` javascript
+// 倒序1
+let newList = list.sort((a,b) => {
+    let n1 = Number(a.id);
+    let n2 = Number(b.id);
+    return n2 - n1;
+});
+// 倒序2
+for (let i = list.length - 1; i >= 0; i--) {
+   // ...
+}
+```
