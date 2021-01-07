@@ -370,6 +370,13 @@ autoCheckBox(type) {
 
 `<pre>{{xxx}}</pre>`
 
+## ElementUI中涉及Dilalog弹窗关闭,但是验证依然存在问题
+
+``` javascript
+this.$refs[formName].clearValidate();  // dialog 的时候
+this.$refs[formName].resetFields(); // 单独的重置的时候
+```
+
 ## 复杂项目实例
 
 - [课程表项目](frontend/vue/project/Class_Schedule_Card_01.md)

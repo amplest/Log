@@ -107,7 +107,6 @@ let clearFeranges: BasicRange[] = Array<BasicRange>(SSWrench.viewRangeToModelRan
 ``` javascript
 // 方法入口第一行
  this.workBookView.getWorkBook().methodDataList = [];
-
 // 方法绘制完成后紧接
 if (ModifyManager.isCollaboration()) {
     // 协作
@@ -116,7 +115,6 @@ if (ModifyManager.isCollaboration()) {
     // 存档
     ModifyManager.sendChanges(this.workBookView.getWorkBook().methodDataList);
 }
-
 // 进入对应功能中
 // 对应功能位置存档数据重组
 let data = {};
@@ -132,19 +130,3 @@ this.getWorkBook().methodDataList.push(change);
 - 一个功能的所有管理可以考虑放在一起,哪怕是从控制层过来的,也可以这么进行处理,可以参考AutoFilterManager中的init方法(此方法需要在workbookview中进行重置)
 - 初始化表之后单元格属性中是不存在行头相关信息的,做操作的时候如果涉及到(如筛选),需要手动进行添加操作`HeadItem`
 - 前端读属性相关信息`_addCellTextToCache`(worksheetview中)断点
-
-## 问题
-
-下一个工作日的任务衔接, 用于快速进入工作状态!
-
-
-
-
-
-## 复制粘贴功能重做
-
-### 文件释义
-
-- `clipboard.d.ts` : 剪切板常量管理
-- `ClipboardTrigger` : 剪切板触发器
-- `Clipboard` : 剪切板
