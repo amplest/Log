@@ -123,6 +123,62 @@ let change = new SsChange(SsMethod.setHyperLink, -1);
 change.data = data;
 this.getWorkBook().methodDataList.push(change);
 ```
+- 判断是否为中文
+``` javascript
+function isChinese(s){
+    return /[\u4e00-\u9fa5]/.test(s);
+    // 0x4E06 丆 0x4E64 乤 ,都不是汉字，但是在汉字区间内
+    // return c <= 0x9FA5 && c >= 0x4E00 && (c != 0x4E06 && c != 0x4E64);
+}    
+```
+- 中文字符串转Unicode
+``` javascript
+toUnicode (s) {
+    let str = "";
+    for (let i = 0; i < s.length; i++) {
+        str +="\\u"+s.charCodeAt(i).toString(16)+"\t";
+    }
+    return str;
+}
+```
+- 十六进制Unicode编码 转换为 中文字符串
+``` javascript
+toStr(n){
+    var str = "";
+    var s = n.split('\\u');
+    for(var i = 0;i < s.length;i++){
+        str += String.fromCharCode(parseInt(s[i],16))+"\t";
+    }
+    return str;
+}
+var b = "\\u80dc    \\u591a    \\u8d1f    \\u5c11";
+document.write(toStr(b));    // 胜    多    负    少
+```
+- 取单元格属性
+``` javascript
+// worksheet
+getCellAttr(row, column): any {
+    let cell = this.getCell(row, column);
+    if (cell && cell.attr) {
+        return cell.attr;
+    }
+    return null;
+}
+```
+- 取单元格属性之后的比较方法
+``` javascript
+// CellAttribute
+getHash(){
+    let align = this.align == undefined ? "" : this.align.getHash();
+    let border = this.border == undefined ? "" : this.border.getHash();
+    let font = this.font == undefined ? "" : this.font.getHash();
+    let fill = this.fill == undefined ? "" : this.fill.getHash();
+    let numFmt = this.numFmt == undefined ? "" : this.numFmt.getHash();
+    let hashStr = align + "|" + border + "|" + font + "|" + fill + "|" + numFmt +"|" + this.pivotButton + "|" + this.quotePrefix;
+    return System.strToHash(hashStr);
+}
+```
+
 
 ## 技巧
 

@@ -136,3 +136,9 @@ for (let i = list.length - 1; i >= 0; i--) {
    // ...
 }
 ```
+
+## Debugger下控制台冻结窗体
+
+``` jacscript
+console.log(setTimeout(function(){debugger;},3000))
+```
