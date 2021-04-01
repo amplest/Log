@@ -43,31 +43,39 @@ git pull
 ```
 8. 提交规范
 
-feat：新功能（feature）。
+- feat：新功能（feature）。
 
-fix/to：修复bug，可以是QA发现的BUG，也可以是研发自己发现的BUG。
+- fix/to：修复bug，可以是QA发现的BUG，也可以是研发自己发现的BUG。
 
-fix：产生diff并自动修复此问题。适合于一次提交直接修复问题
+- fix：产生diff并自动修复此问题。适合于一次提交直接修复问题
 
-to：只产生diff不自动修复此问题。适合于多次提交。最终修复问题提交时使用fix
+- to：只产生diff不自动修复此问题。适合于多次提交。最终修复问题提交时使用fix
 
-docs：文档（documentation）。
+- docs：文档（documentation）。
 
-style：格式（不影响代码运行的变动）。
+- style：格式（不影响代码运行的变动）。
 
-refactor：重构（即不是新增功能，也不是修改bug的代码变动）。
+- refactor：重构（即不是新增功能，也不是修改bug的代码变动）。
 
-perf：优化相关，比如提升性能、体验。
+- perf：优化相关，比如提升性能、体验。
 
-test：增加测试。
+- test：增加测试。
 
-chore：构建过程或辅助工具的变动。
+- chore：构建过程或辅助工具的变动。
 
-revert：回滚到上一个版本。
+- revert：回滚到上一个版本。
 
-merge：代码合并。
+- merge：代码合并。
 
-sync：同步主线或分支的Bug。
+- sync：同步主线或分支的Bug。
+
+9. 放弃本期修改,强制拉取最新代码
+
+``` sh
+git fetch --all
+git reset --hard origin/4.0_eio
+git pull
+```
 
 ## npm 
 
@@ -123,6 +131,76 @@ treer -i "node_modules"
 treer -e "test.txt"
 ```
 
-## vs code
+## vs code 配置信息
 
-Setting Sync 配置
+``` json
+{
+  "sync.gist": "",
+  "workbench.settings.useSplitJSON": true,
+  "workbench.iconTheme": "material-icon-theme",
+  "files.defaultLanguage": "html",
+
+  "editor.formatOnSave": false,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "vue"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+
+  "eslint.run": "onSave",
+
+  "window.zoomLevel": 0,
+
+  "vetur.format.defaultFormatter.html": "js-beautify-html",
+  "vetur.format.defaultFormatter.js": "vscode-typescript",
+  "vetur.format.defaultFormatterOptions": {
+    "prettier": {
+      // 格式化不加分号
+      "semi": false,
+      // 格式化为单引号
+      "singleQuote": true
+    },
+    "js-beautify-html": {
+      "wrap_attributes": "auto"
+    }
+  },
+
+  "explorer.confirmDelete": false,
+  "files.autoSave": "onFocusChange",
+
+  "[vue]": {
+    "editor.defaultFormatter": "octref.vetur"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "explorer.confirmDragAndDrop": false,
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+  "workbench.editorAssociations": [
+
+  ],
+  
+  "liveSassCompile.settings.formats":[
+    // 扩展
+    {
+        "format": "compact",//可定制的出口CSS样式（expanded，compact，compressed，nested）
+        "extensionName": ".min.css",//编译后缀名
+        "savePath": "/css"//编译保存的路径
+    } 
+    
+  ],
+"liveSassCompile.settings.excludeList": [
+    "**/node_modules/**",
+    ".vscode/**"
+  ]
+}
+```

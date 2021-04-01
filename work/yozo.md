@@ -108,7 +108,7 @@ let clearFeranges: BasicRange[] = Array<BasicRange>(SSWrench.viewRangeToModelRan
 // 方法入口第一行
  this.workBookView.getWorkBook().methodDataList = [];
 // 方法绘制完成后紧接
-if (ModifyManager.isCollaboration()) {
+if (Team.isCollaborative()) {
     // 协作
     this.workBookView.optCollaboration(this.workBookView.getWorkBook().methodDataList)
 } else {
@@ -178,7 +178,59 @@ getHash(){
     return System.strToHash(hashStr);
 }
 ```
+- 所有键盘按键入口`EventsController文件下_onWindowKeyDown方法`
+- JS styleSheets对象：读取页面的所有CSS样式
 
+``` javascript
+var cssRules = document.styleSheets[0].cssRules || document.styleSheets[0].rules;
+```
+``` javascript
+var mycssstyles;
+//判断是否支持DOM2级样式表。
+if(document.implementation.hasFeature("StyleSheets", "2.0")) {
+    for(var i = 0; i < document.styleSheets.length; i++) {
+        if(document.styleSheets[i].type == "text/css") {
+            mycssstyles = document.styleSheets[i];
+        }
+    }
+    //ie不存在cssrules。 firefox不存在rules
+    if(mycssstyles.cssRules) {
+        mycssstyles = mycssstyles.cssRules;
+    } else {
+        //火狐浏览器没有rules
+        if(mycssstyles.rules) {
+            mycssstyles = mycssstyles.rules;
+        }
+    }
+    console.log(mycssstyles);
+}
+```
+在上面代码中，先判断浏览器是否支持 cssRules 对象，如果支持则使用 cssRules（非 IE 浏览器），否则使用 rules（IE 浏览器）
+- 取节点中的样式
+``` javascript
+function getStyle(node, property) {
+    if (node.style[property]) {
+        return node.style[property]
+    } else if (node.currentStyle) {
+        return node.currentStyle[property]
+    } else if (document.defaultView && document.defaultView.getComputedStyle) {
+        console.log(style.getPropertyValue(property)) return style.getPropertyValue(property)
+    }
+    return null
+}
+console.log(getStyle(document.getElementById('xl65'), 'mso-number-format'))
+```
+- 查看SSUndoManager
+``` javascript
+YozoOffice.Application.ActiveSheet.__sheet.sheet.parent.ssUndoManager
+```
+- 只读
+``` javascript
+if (UserInfo.isReadonly()) {
+    return;
+}
+```
+- 快捷键入口从这边儿找: `EventsController`, 如:`esc`
 
 ## 技巧
 
