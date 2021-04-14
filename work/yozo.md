@@ -231,6 +231,8 @@ if (UserInfo.isReadonly()) {
 }
 ```
 - 快捷键入口从这边儿找: `EventsController`, 如:`esc`
+- `_onEditCell` 进入编辑状态入口
+- undo/redo的时候,cessEdit一定要在setCell之前开始记录
 
 ## 技巧
 
@@ -238,3 +240,4 @@ if (UserInfo.isReadonly()) {
 - 一个功能的所有管理可以考虑放在一起,哪怕是从控制层过来的,也可以这么进行处理,可以参考AutoFilterManager中的init方法(此方法需要在workbookview中进行重置)
 - 初始化表之后单元格属性中是不存在行头相关信息的,做操作的时候如果涉及到(如筛选),需要手动进行添加操作`HeadItem`
 - 前端读属性相关信息`_addCellTextToCache`(worksheetview中)断点
+- xx1637/xiongxing520
