@@ -233,6 +233,7 @@ if (UserInfo.isReadonly()) {
 - 快捷键入口从这边儿找: `EventsController`, 如:`esc`
 - `_onEditCell` 进入编辑状态入口
 - undo/redo的时候,cessEdit一定要在setCell之前开始记录
+- `BinaryWorksheetTableReader`开档解析入口
 
 ## 技巧
 
