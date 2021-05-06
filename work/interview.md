@@ -24,8 +24,7 @@
 
 注销阶段：beforeDestroy、destroyed
 
-![`生命周期图例`](/assets/interview.png)
-
+[生命周期图例](#smzq)
 
 ### ajax放在vue的哪个生命周期中？
 
@@ -86,3 +85,11 @@ Created的使用场景：如果页面首次渲染的就来自后端数据。因�
 flex：1 的尺寸是较长的尺寸优先牺牲自己的尺寸，而flex:auto 中是较长的尺寸优先扩展自己的尺寸
 
 ### CSS.escape()
+
+## 生命周期图例 
+
+<span id="smzq"></span>
+
+![`生命周期图例`](/assets/interview.png)
+
+## vuex图例
