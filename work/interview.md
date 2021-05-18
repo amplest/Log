@@ -105,6 +105,38 @@ this.$store.commit('user/SET_NAME', 'ax')
 
 第二参数都可以接收外部提交时传来的参数。 `this.$store.dispatch('ACTION_NAME',data)`和`this.$store.commit('SET_NUMBER',10)`
 
+### Vuex中action通常是异步的，那么如何知道action什么时候结束呢？
+
+在action函数中返回Promise，然后再提交时候用then处理
+
+``` javascript
+actions:{
+    SET_NUMBER_A({commit},data){
+        return new Promise((resolve,reject) =>{
+            setTimeout(() =>{
+                commit('SET_NUMBER',10);
+                resolve();
+            },2000)
+        })
+    }
+}
+this.$store.dispatch('SET_NUMBER_A').then(() => {
+  // ...
+})
+```
+
+### 在模块中，getter和mutation接收的第一个参数state，是全局的还是模块的？
+
+第一个参数state是模块的state，也就是局部的state。
+
+### 在模块中，getter和mutation和action中怎么访问全局的state和getter？
+
+- 在getter中可以通过第三个参数rootState访问到全局的state,可以通过第四个参数rootGetters访问到全局的getter。
+- 在mutation中不可以访问全局的satat和getter，只能访问到局部的state。
+- 在action中第一个参数context中的context.rootState访问到全局的state，context.rootGetters访问到全局的getter。
+
+### 
+
 ## VueRoute
 
 - 导航被触发。
@@ -125,6 +157,28 @@ this.$store.commit('user/SET_NAME', 'ax')
 路由独享守卫: `beforeEnter`
 
 组件内守卫: `beforeRouteEnter`/`beforeRouteUpdate`/`beforeRouteLeave`
+
+### vue-router 路由模式有几种？
+
+hash、history、abstract
+
+``` javascript
+switch (mode) {
+  case 'history':
+	this.history = new HTML5History(this, options.base)
+	break
+  case 'hash':
+	this.history = new HashHistory(this, options.base, this.fallback)
+	break
+  case 'abstract':
+	this.history = new AbstractHistory(this, options.base)
+	break
+  default:
+	if (process.env.NODE_ENV !== 'production') {
+	  assert(false, `invalid mode: ${mode}`)
+	}
+}
+````
 
 ## Vue其他
 
