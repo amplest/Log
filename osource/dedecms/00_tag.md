@@ -39,6 +39,17 @@
     <a href='[field:typelink/]'>[field:typename/]</a>
 {/dede:channel}
 ```
+
+``` html
+{dede:channelartlist type='top' row='9' currentstyle="active" }
+  <li class="{dede:field.currentstyle/}"><a href="{dede:field name='typeurl'/}"> {dede:field name='typename'/}</a>
+  <div>
+    {dede:channel type='son' noself='yes'}<a href="[field:typelink/]" >[field:typename/]</a>{/dede:channel}
+  </div>
+  </li>
+{/dede:channelartlist}
+```
+
 - 当前页栏目名称调用：`{dede:field name='typename'/}` 或 `{dede:type }[field:typename/]{/dede:type} `
 - 单独调用栏目：`{dede:type typeid='17'}[field:typename/]{/dede:type}`
 - 单独调用栏目（带连接）：`{dede:type typeid='17'}<a href="[field:typelink/]">[field:typename/]</a>{/dede:type}`
