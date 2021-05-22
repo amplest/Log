@@ -41,13 +41,18 @@
 ```
 
 ``` html
-{dede:channelartlist type='top' row='9' currentstyle="active" }
+<ul>
+<li {dede:field name=typeid runphp="yes"}(@me=="")? @me=" class='active'":@me="";{/dede:field}>
+  <a href="/">网站首页</a>
+</li>
+{dede:channelartlist typeid='25,26,27,28,29,30,31,32,33' row='100' currentstyle="active" }
   <li class="{dede:field.currentstyle/}"><a href="{dede:field name='typeurl'/}"> {dede:field name='typename'/}</a>
-  <div>
+  <div class="head-menu-down">
     {dede:channel type='son' noself='yes'}<a href="[field:typelink/]" >[field:typename/]</a>{/dede:channel}
   </div>
   </li>
 {/dede:channelartlist}
+</ul>
 ```
 
 - 当前页栏目名称调用：`{dede:field name='typename'/}` 或 `{dede:type }[field:typename/]{/dede:type} `
